@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Création d'un utilisateur
+{% endblock title %}
+
+{% block content %}
+
+        {% if user %}
+            <form action="{{ env.base_path ~ '/users/' ~ user.id ~ '/edit' }}" method="post" class="form">
+        {% else %}
+            <form action="{{ env.base_path ~ '/users/new/' }}" method="post" class="form">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="formFirstname">Prénom</label>
+            <input id="formFirstname" type="text" class="form-control" name="firstname" value="{{ user.firstname }}">
+        </div>
+        <div class="form-group">
+            <label for="formLastname">Nom</label>
+            <input id="formLastname" type="text" class="form-control" name="lastname" value="{{ user.lastname }}">
+        </div>
+
+        <div class="pull-right">
+            {% if user %}
+            <button class="btn btn-warning">Éditer l'utilisateur</button>
+            {% else %}
+            <button class="btn btn-primary">Créer l'utilisateur</button>
+            {% endif %}
+        </div>
+
+    </form>
+{% endblock content %}

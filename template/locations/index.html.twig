@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des locations
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+
+            <a href="{{ env.base_path ~ '/locations/new' }}" class="btn btn-primary mb-2">Créer une location</a>
+
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th># Conducteur</th>
+                        <th># Voiture</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for location in locations %}
+                        <tr>
+                            <td>{{ location.id }}</td>
+                            <td>{{ location.userId }} : {{location.user.firstname}} {{location.user.lastname}}</td>
+                            <td>{{ location.carId }} : : {{location.car.brand}} {{location.car.model}}</td>
+                            <td>
+                                <a href="{{ env.base_path ~ '/locations/' ~ location.id }}" class="btn btn-xs btn-primary">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+{% endblock content %}

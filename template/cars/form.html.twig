@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Création d'une voiture
+{% endblock title %}
+
+{% block content %}
+
+        {% if car %}
+            <form action="{{ env.base_path ~ '/cars/' ~ car.id ~ '/edit' }}" method="post" class="form">
+        {% else %}
+            <form action="{{ env.base_path ~ '/cars/new/' }}" method="post" class="form">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="formbrand">Marque</label>
+            <input id="formbrand" type="text" class="form-control" name="brand" value="{{ car.brand }}">
+        </div>
+        <div class="form-group">
+            <label for="formModel">Modèle</label>
+            <input id="formModel" type="text" class="form-control" name="model" value="{{ car.model }}">
+        </div>
+
+        <div class="pull-right">
+            {% if car %}
+            <button class="btn btn-warning">Éditer la voiture</button>
+            {% else %}
+            <button class="btn btn-primary">Créer la voiture</button>
+            {% endif %}
+        </div>
+
+    </form>
+{% endblock content %}

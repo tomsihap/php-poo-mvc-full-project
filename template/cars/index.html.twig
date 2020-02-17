@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des voitures
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+
+            <a href="{{ env.base_path ~ '/cars/new' }}" class="btn btn-primary mb-2">Créer un voiture</a>
+
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Marque</th>
+                        <th>Modèle</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for car in cars %}
+                        <tr>
+                            <td>{{ car.id }}</td>
+                            <td>{{ car.brand }}</td>
+                            <td>{{ car.model }}</td>
+                            <td>
+                                <a href="{{ env.base_path ~ '/cars/' ~ car.id }}" class="btn btn-xs btn-primary">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+{% endblock content %}

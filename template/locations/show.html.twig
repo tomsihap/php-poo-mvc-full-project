@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Location : {{ location.id }}
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <a href="{{env.base_path ~ '/locations'}}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> retour
+            </a>
+            <div class="card">
+                <div class="card-header">{{location.id}}</div>
+                <div class="card-body">
+                    <ul>
+                        <li>User # {{ location.userId }} : {{location.user.firstname}} {{location.user.lastname}}</li>
+                        <li>Car # {{ location.carId }} : {{location.car.brand}} {{location.car.model}}</li>
+                    </ul>
+
+                    <a href="{{ env.base_path ~ '/locations/' ~ location.id ~ '/edit' }}" class="btn btn-warning">Editer</a>
+                    <a href="{{ env.base_path ~ '/locations/' ~ location.id ~ '/delete' }}" class="btn btn-danger">Supprimer</a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

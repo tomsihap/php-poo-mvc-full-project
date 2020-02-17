@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+     Utilisateur : {{ user.firstname }} {{ user.lastname }}
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <a href="{{env.base_path ~ '/users'}}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> retour
+            </a>
+            <div class="card">
+                <div class="card-header">{{user.firstname}} {{user.lastname}}</div>
+                <div class="card-body">
+
+                    <a href="{{ env.base_path ~ '/users/' ~ user.id ~ '/edit' }}" class="btn btn-warning">Editer</a>
+                    <a href="{{ env.base_path ~ '/users/' ~ user.id ~ '/delete' }}" class="btn btn-danger">Supprimer</a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

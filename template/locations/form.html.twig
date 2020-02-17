@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Création d'une location
+{% endblock title %}
+
+{% block content %}
+
+        {% if location %}
+            <form action="{{ env.base_path ~ '/locations/' ~ location.id ~ '/edit' }}" method="post" class="form">
+        {% else %}
+            <form action="{{ env.base_path ~ '/locations/new/' }}" method="post" class="form">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="formUser">Utilisateur</label>
+            <select id="formUser" type="text" class="form-control" name="user_id">
+                {% for user in users %}
+                    <option value="{{user.id}}" {% if location and location.userId == user.id %} selected {% endif %}>
+                        {{user.firstname}} {{user.lastname}}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="formCar">Voiture</label>
+            <select id="formCar" type="text" class="form-control" name="car_id">
+                {% for car in cars %}
+                    <option value="{{car.id}}" {% if location and location.carId == car.id %} selected {% endif %}>
+                        {{car.brand}} {{car.model}}
+                    </option>                
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="pull-right">
+            {% if location %}
+            <button class="btn btn-warning">Éditer la location</button>
+            {% else %}
+            <button class="btn btn-primary">Créer la location</button>
+            {% endif %}
+        </div>
+
+    </form>
+{% endblock content %}

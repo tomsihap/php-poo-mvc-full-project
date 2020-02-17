@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Voiture : {{ car.firstname }} {{ car.lastname }}
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <a href="{{env.base_path ~ '/cars'}}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> retour
+            </a>
+            <div class="card">
+                <div class="card-header">{{car.brand}} {{car.model}}</div>
+                <div class="card-body">
+
+                    <a href="{{ env.base_path ~ '/cars/' ~ car.id ~ '/edit' }}" class="btn btn-warning">Editer</a>
+                    <a href="{{ env.base_path ~ '/cars/' ~ car.id ~ '/delete' }}" class="btn btn-danger">Supprimer</a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
